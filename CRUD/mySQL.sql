@@ -1,0 +1,25 @@
+CREATE DATABASE USER_LOGIN;
+CREATE DATABASE FORMS;
+CREATE DATABASE TEST;
+
+USE USER_LOGIN;
+CREATE TABLE USER_DATA (
+    ID int PRIMARY KEY,
+    UserName varchar(25) NOT NULL,
+    FirstName varchar(25) NOT NULL,
+    SurName varchar(35) NOT NULL,
+    Mail varchar(255) NOT NULL,
+    PASSWORD varchar(255) NOT NULL
+);
+
+
+CREATE TABLE ORDERS (
+    OrderID int PRIMARY KEY,
+    OrderNumber int NOT NULL,
+    ID int,
+    CONSTRAINT MandatoryID
+    FOREIGN KEY (ID)
+    REFERENCES USER_DATA(ID)
+);
+
+DROP DATABASE USER_DATA;

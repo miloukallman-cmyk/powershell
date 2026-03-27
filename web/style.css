@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a:visited{
+    text-decoration: none;
+    color: black;
+}
+
+.nav-knapp{
+    text-decoration: none;
+    color:  black;
+}
+
+header{
+    background-color: rgb(255, 255, 255);
+    
+}
+
+
+
+
+/*#region header*/
+
+    .header-grid{
+        display: grid;
+        grid-template-columns: 3fr 1fr 3fr;
+        grid-template-rows: 1fr 1fr;
+        width: 100%;
+        align-items: center;
+  
+    }
+
+    header div h1{
+        padding: 0px 10px;
+        justify-self: left;
+        
+    }
+
+    header div h2{
+        justify-self: center;
+    }
+
+    header div nav{
+        justify-self: right;
+
+    }
+
+    header nav ul{ 
+        display: flex;
+    }
+
+    header nav ul li{   
+        list-style-type: none;
+    }
+
+    header nav ul li a{
+        margin: 0px 20px;
+        padding:0px 10px;
+        border: 2px black solid;
+        border-radius: 4px;
+    }  
+    
+    .tool-bar{
+        grid-row: 2/3;
+        grid-column: 1/4;
+        border: 2px black outset;
+        display: flex;
+    }
+
+    .tool-bar div{
+        margin :0px 5px;
+    }
+        .tool-bar div:hover{
+        background-color: grey;
+    }
+
+    
+
+    @media (max-width:600px){
+        .header-grid{
+            grid-template-columns: 3fr 3fr;
+        grid-template-rows: 1fr 1fr 1fr;
+            
+        }
+        header div h1{
+            grid-row: 1/2;
+            grid-column:1/4;
+            justify-self: center;   
+        }
+        header div h2{
+            grid-row:2/3;
+            grid-column: 1/2;
+        }
+        header div nav{
+            grid-row:2/3;
+            grid-column: 2/4;
+        }
+        .tool-bar{
+            grid-row: 3;
+            grid-column: 1/4;
+        }
+    }
+    
+/*#endregion*/
+
+.main-content{
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    grid-template-rows: 300px; 
+}
+
+.content{
+    grid-row: 1/2;
+    grid-column: 2/3;
+}
+
+.side-nav{
+    grid-row: 1/2;
+    grid-column: 1/2;
+}
