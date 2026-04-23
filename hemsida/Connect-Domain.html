@@ -1,40 +1,79 @@
+
+
+CREATE USER IF NOT EXISTS 'admin'@'localhost' IDENTIFIED BY 'admin';
+CREATE DATABASE IF NOT EXISTS M_formWeb;
+GRANT ALL PRIVILEGES ON M_formWeb.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;
+
+USE M_formWeb;
+
+CREATE TABLE Users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    UserName VARCHAR(255) NOT NULL UNIQUE,
+    Mail VARCHAR(255) NOT NULL UNIQUE,
+    Passwrd TEXT NOT NULL
+);
+
+CREATE TABLE UserInfo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL, -- Denna lades till för att kopplingen ska fungera
+    GivenName VARCHAR(255),
+    SurName VARCHAR(255),
+    DOB DATE,
+    PhoneNumber VARCHAR(255),
+    Country VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE
+);
+PHP & HTML
+Jag har lagt till prepared statements för att skydda mot SQL-injections och logik för att kontrollera om användarnamnet/mejlen redan finns.
+
+PHP
+<?php
+$servername = "localhost";
+$username = "admin";
+$password = "admin";
+$dbname = "Mosad";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {¨
+    $Namn = $_POST ["Namn"]
+    $Efternamn = $_POST ["Efternamn"]
+    $Mynt = $_POST ["$$$$"]
+    $sql = "INSERT INTO formdata (FirstName, LastName, AIPAC$) VALUES($Namn,$Efternamn,$Mynt)";
+    $conn->query($sql)
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="logic.js"></script>
-    <title>Document</title>
+    <title>Register</title>
+    <link rel="stylesheet" href="form.css">
 </head>
 <body>
-    <header>
-        <div class="titel">Shitnet</div>
-        <nav>
-            <ul>
-                <li class="knapp"><a href="Connect-Domain.html">Link SQL</a></li>
-            </ul>
-        </nav>
-        <div class="login-display">Connected to Domain: Shitnet.com</div>
-        <div class="login-display">Logged in as: Administrator</div>
-    </header>
-    <nav class="toolbar">
-        <ul>
-            <li class="toolbar-btns"><div>tool-1</div></li>
-            <li class="toolbar-btns"><div>tool-2</div></li>
-            <li class="toolbar-btns"><div>tool-3</div></li>
-            <li class="toolbar-btns"><div>tool-4</div></li>
-        </ul>
-    </nav>
-    <main class="grid-container">
-        <ul>
-            <li id="Domain">Domain:</li>  <!--js insert domain connected  -->
-            <li>Connected SQL DB <!--toggle dropdown på klick-->
-                <ul>
-                    <li>Enter <a href="">DB:Name</a></li> <!--js insert domain connected  -->
-                </ul>
-            </li>
-        </ul>
+    <nav><a href="" id="title">Form</a></nav>
+    <main>
+        <div id="formContainer">
+            <form method="POST">
+                <h1>Register</h1>
+                <?php if($message) echo "<p><strong>$message</strong></p>"; ?>
+                
+                Namn: <br>
+                <input type="text" name="Namn" required><br>
+                
+                Efternamn: <br>
+                <input type="text" name="Efternamn" required><br>
+                
+                Hur många mynt har du i fickan?: <br>
+                <input type="text" name="Mail" required><br>
+                
+                <input type="submit" value="Skicka">
+            </form>
+        </div>
     </main>
 </body>
 </html>
