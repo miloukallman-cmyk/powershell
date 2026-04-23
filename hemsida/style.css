@@ -1,74 +1,61 @@
 *{
-    margin: 0;
     padding: 0;
-    font-size: x-large;
+    margin: 0;
 }
 
-a{
-    text-decoration: none;
+
+
+
+
+a:visited{
+    text-decoration-style: none;
     color: black;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 
-.knapp:hover{
-    transform: scale(1.02);
-    transition: 0.3s ease;
-}
-
-.knapp:active{
-    transform: scale(0.9);
-}
-
-
-
-header{
-    background-color: rgb(241, 232, 232);
+nav{
     display: flex;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    border-radius: 5px;
     align-items: center;
-    gap: 3vw;
-    height: 5vw;
-    
+    justify-content: space-between;
+    border-radius: 10px;
+    border:
+        solid 
+        black
+        1px
+     ;
+
 }
 
-header div{
-    /* margin: 30px 20px; */
+#title{
+    margin:20px;
+    padding: 5px 30px;
+    font-size: xx-large;
+    border-radius: 5px;    
+    border: 
+        black
+        solid
+        1px
+    ;
+
 }
 
-nav ul{
-   display: flex; 
-}
 
-.knapp{
-    align-self: center;
-    list-style-type: none;
+#nav_UL{
+    display: flex;
+    margin: 0 20px;
+    gap: 30px;
     list-style: none;
 
 }
 
-.grid-container{
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    grid-template-rows: 300px 1fr;
-}
+.login_btns{
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: 
+    solid
+    black 
+    1px
+    ;
 
-.grid-container h3{
-
-}
-
-.knapp{
-    padding :10px 20px;
-    border: 1px black double;
-    border-radius: 10px;
-    background-color: rgb(255, 255, 255);
-}
-
-.titel{
-    margin:10px 10px;
-}
-
-.toolbar-btns{
-    margin: 10px 10px;
-    list-style-type: none;
+    
 }
